@@ -1,0 +1,4 @@
+bin/
+/webhook
+*.test
+coverage.out

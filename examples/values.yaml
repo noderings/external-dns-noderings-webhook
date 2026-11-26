@@ -1,0 +1,40 @@
+# Values for the official external-dns Helm chart
+# (https://kubernetes-sigs.github.io/external-dns/) that run this webhook as a
+# sidecar next to external-dns.
+#
+#   kubectl -n external-dns create secret generic noderings-token --from-literal=token=<TOKEN>
+#   helm upgrade --install external-dns external-dns/external-dns -n external-dns -f values.yaml
+
+provider:
+  name: webhook
+  webhook:
+    image:
+      repository: ghcr.io/noderings/external-dns-noderings-webhook
+      tag: v0.1.0
+    env:
+      - name: NODERINGS_TOKEN
+        valueFrom:
+          secretKeyRef:
+            name: noderings-token
+            key: token
+      # Only needed when the token can reach several organizations.
+      # - name: NODERINGS_ORGANIZATION_ID
+      #   value: "<organization id>"
+      # Keep this the same as domainFilters below.
+      - name: DOMAIN_FILTER
+        value: example.com
+
+# Only touch these zones (and names below them).
+domainFilters: [example.com]
+
+# "sync" also deletes records when their Ingress or Service goes away.
+# "upsert-only" never deletes.
+policy: sync
+
+# external-dns marks the records it owns with TXT records. Give each cluster
+# that writes to the same zone its own ID.
+registry: txt
+txtOwnerId: my-cluster
+
+sources: [service, ingress]
+interval: 1m
