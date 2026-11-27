@@ -153,6 +153,7 @@ fixes there should land in both repositories.
   TLS certificates for the same zones with ACME DNS-01.
 - [Terraform provider](https://github.com/noderings/terraform-provider-noderings) and
   [Pulumi provider](https://github.com/noderings/pulumi-noderings) to create the zones.
+- [Go SDK](https://github.com/noderings/noderings-go): official Go client for the NodeRings API.
 
 ## License
 
