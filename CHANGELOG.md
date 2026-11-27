@@ -4,6 +4,13 @@ All notable changes to this project are documented in this file. The format foll
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.1.1](https://github.com/noderings/external-dns-noderings-webhook/compare/v0.1.0...v0.1.1) (2026-11-27)
+
+
+### Documentation
+
+* link the official Go SDK in the README ([#3](https://github.com/noderings/external-dns-noderings-webhook/issues/3)) ([86e8595](https://github.com/noderings/external-dns-noderings-webhook/commit/86e85950647e780f793acc95e89686242485db0c))
+
 ## [Unreleased]
 
 ## [0.1.0] - 2026-11-26
